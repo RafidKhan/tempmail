@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:temp_mail/Pages/create_account.dart';
+import 'package:temp_mail/Pages/splash_page.dart';
+import 'package:temp_mail/Repositories/appRoutes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,12 +13,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Temp Mail',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-     //home: MyHomePage(),
+      getPages: AppRoutes.routes,
+      initialRoute: AppRoutes.INITIAL,
+      home: SplashPage(),
     );
   }
 }

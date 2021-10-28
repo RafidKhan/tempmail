@@ -1,0 +1,3 @@
+class DomainData{
+  List domain = [];
+}

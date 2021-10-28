@@ -1,0 +1,4 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+com/tempmail/app/temp_mail/BuildConfig.java
+ com.tempmail.app.temp_mail.BuildConfig
