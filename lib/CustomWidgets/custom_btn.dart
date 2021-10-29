@@ -17,11 +17,11 @@ class _CustomButtonState extends State<CustomButton> {
       height: Get.height / 15,
       width: Get.width,
       decoration: BoxDecoration(
-          color: Colors.black, borderRadius: BorderRadius.circular(10)),
+          color: Colors.blue[500], borderRadius: BorderRadius.circular(10)),
       child: Center(
         child: Text(
           widget.btnText,
-          style: TextStyle(fontSize: Get.width / 20, color: Colors.white),
+          style: TextStyle(fontSize: Get.width / 20, color: Colors.white, fontWeight: FontWeight.w300),
         ),
       ),
     );

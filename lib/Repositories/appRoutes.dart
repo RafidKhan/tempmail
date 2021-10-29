@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:temp_mail/Pages/create_account.dart';
 import 'package:temp_mail/Pages/dashboard.dart';
 import 'package:temp_mail/Pages/login_page.dart';
+import 'package:temp_mail/Pages/read_email_page.dart';
 import 'package:temp_mail/Pages/splash_page.dart';
 
 class AppRoutes {
@@ -9,6 +10,7 @@ class AppRoutes {
   static String CREATEACCOUNT = "/CreateAccount";
   static String LOGIN = "/Login";
   static String DASHBAORD = "/DashBoard";
+  static String READEMAIL = "/ReadEmailPage";
 
   static List<GetPage> routes = [
     GetPage(
@@ -26,6 +28,10 @@ class AppRoutes {
     GetPage(
       name: DASHBAORD,
       page: () => DashBoard(),
+    ),
+    GetPage(
+      name: READEMAIL,
+      page: () => ReadEmailPage(),
     ),
   ];
 }

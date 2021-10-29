@@ -74,6 +74,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_spinkit",
+      "rootUri": "file:///C:/Users/User/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_spinkit-5.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///G:/Flutter%20SDK/flutter/packages/flutter_test",
       "packageUri": "lib/",
@@ -100,6 +106,12 @@
     {
       "name": "http_parser",
       "rootUri": "file:///C:/Users/User/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/http_parser-4.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "intl",
+      "rootUri": "file:///C:/Users/User/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/intl-0.17.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -278,7 +290,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-10-29T05:09:41.040085Z",
+  "generated": "2021-10-29T12:03:42.896614Z",
   "generator": "pub",
   "generatorVersion": "2.15.0-82.2.beta"
 }

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:temp_mail/CustomWidgets/custom_btn.dart';
 import 'package:temp_mail/Repositories/api_methods.dart';
-
+import 'package:temp_mail/Repositories/appRoutes.dart';
+import 'package:temp_mail/Variables/login_data.dart';
+import 'package:temp_mail/Variables/login_loader.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -13,83 +17,149 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
   TextEditingController emailController = new TextEditingController();
   TextEditingController passController = new TextEditingController();
 
   final apiCall = Get.put(ApiCall());
+  final loginData = Get.put(LoginData());
+
+  appClose() {
+    SystemNavigator.pop();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.all(20),
-          child: SingleChildScrollView(
-            child: Column(
+    return WillPopScope(
+      onWillPop: () => appClose(),
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        bottomNavigationBar: Container(
+          width: Get.width,
+          height: Get.height/15,
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextFormField(
-                  controller: emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  style: TextStyle(
-                      fontSize: Get.width / 30, color: Colors.black),
-                  decoration: InputDecoration(
-                      icon: Icon(
-                        Icons.person,
-                        color: Colors.black,
-                      ),
-                      hintStyle: TextStyle(
-                          fontSize: Get.width / 40, color: Colors.black),
-                      hintText: ("Enter Email"),
-                      labelStyle: TextStyle(
-                          fontSize: Get.width / 40, color: Colors.black),
-                      labelText: ("Email")),
-                ),
-                SizedBox(
-                  height: Get.height / 20,
-                ),
-                TextFormField(
-                  obscureText: true,
-                  controller: passController,
-                  style: TextStyle(
-                      fontSize: Get.width / 30, color: Colors.black),
-                  decoration: InputDecoration(
-                      icon: Icon(
-                        Icons.lock,
-                        color: Colors.black,
-                      ),
-                      hintStyle: TextStyle(
-                          fontSize: Get.width / 40, color: Colors.black),
-                      hintText: ("Enter Password"),
-                      labelStyle: TextStyle(
-                          fontSize: Get.width / 40, color: Colors.black),
-                      labelText: ("Pasword")),
-                ),
-                SizedBox(
-                  height: Get.height / 20,
-                ),
+                Text("Do not have an account? "),
                 GestureDetector(
-                    onTap: () => login(),
-                    child: CustomButton(
-                      btnText: "Login",
-                    ))
+                  onTap: (){
+                    Get.toNamed(AppRoutes.CREATEACCOUNT);
+                  },
+                  child: Text("Create Account!",style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    decoration: TextDecoration.underline,
+                  ),),
+                ),
               ],
+            ),
+          ),
+        ),
+        body: Center(
+          child: Padding(
+            padding: EdgeInsets.all(20),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  TextFormField(
+                    controller: emailController,
+                    keyboardType: TextInputType.emailAddress,
+
+                    style: TextStyle(
+                        fontSize: Get.width / 30, color: Colors.black),
+                    decoration: InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                        icon: Icon(
+                          Icons.email,
+                          color: Colors.black,
+                        ),
+                        hintStyle: TextStyle(
+                            fontSize: Get.width / 40, color: Colors.black),
+                        hintText: ("Enter Email"),
+                        labelStyle: TextStyle(
+                            fontSize: Get.width / 40, color: Colors.black),
+                        labelText: ("Email")),
+                  ),
+                  SizedBox(
+                    height: Get.height / 20,
+                  ),
+                  TextFormField(
+                    obscureText: true,
+                    controller: passController,
+                    style: TextStyle(
+                        fontSize: Get.width / 30, color: Colors.black),
+                    decoration: InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                        icon: Icon(
+                          Icons.lock,
+                          color: Colors.black,
+                        ),
+                        hintStyle: TextStyle(
+                            fontSize: Get.width / 40, color: Colors.black),
+                        hintText: ("Enter Password"),
+                        labelStyle: TextStyle(
+                            fontSize: Get.width / 40, color: Colors.black),
+                        labelText: ("Password")),
+                  ),
+                  SizedBox(
+                    height: Get.height / 20,
+                  ),
+                  LoginLoader.loaderStatus == false
+                      ? GestureDetector(
+                          onTap: () => login(),
+                          child: CustomButton(
+                            btnText: "Login",
+                          ))
+                      : SpinKitWanderingCubes(
+                    color: Colors.black,
+                    size: Get.width/10,
+                  )
+                ],
+              ),
             ),
           ),
         ),
       ),
     );
   }
-  login()async{
-    if(emailController.text==''){
-      Get.snackbar("Plase Enter Email", "");
-    }
-    else if(passController.text==''){
-      Get.snackbar("Plase Enter Password", "");
-    }
-    else{
+
+  login() async {
+    setState(() {
+      LoginLoader.loaderStatus = true;
+    });
+    if (emailController.text == '') {
+      Get.snackbar("Please Enter Email", "");
+      setState(() {
+        LoginLoader.loaderStatus = false;
+      });
+    } else if (passController.text == '') {
+      Get.snackbar("Please Enter Password", "");
+      setState(() {
+        LoginLoader.loaderStatus = false;
+      });
+    } else {
       print("Login");
-      apiCall.login(email: emailController.text.trim(),password: passController.text.trim());
+      await apiCall.login(
+          email: emailController.text.trim(),
+          password: passController.text.trim());
+      setState(() {
+        LoginLoader.loaderStatus = false;
+      });
     }
   }
 }
