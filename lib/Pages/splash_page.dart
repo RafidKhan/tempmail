@@ -17,9 +17,7 @@ class _SplashPageState extends State<SplashPage> {
 
   timerFunc() {
     Timer(Duration(seconds: 3), () {
-      Get.toNamed(AppRoutes.CREATEACCOUNT);
-
-      //  Get.toNamed(AppRoutes.SIGNIN);
+      Get.toNamed(AppRoutes.LOGIN);
     });
   }
 

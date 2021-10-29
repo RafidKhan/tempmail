@@ -23,13 +23,13 @@ class _CreateAccountState extends State<CreateAccount> {
 
   String? initialDomain;
 
-  setDomain() async{
-    initialDomain = await domainData.domain[0].toString();
+  setDomain() async {
+    //initialDomain = await domainData.domain[0].toString();
   }
 
   @override
   void initState() {
-    setDomain();
+    //setDomain();
     super.initState();
   }
 
@@ -46,46 +46,49 @@ class _CreateAccountState extends State<CreateAccount> {
                 Row(
                   children: [
                     Container(
-                      width: Get.width/2,
+                      width: Get.width / 2,
                       child: TextFormField(
                         controller: emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        style:
-                            TextStyle(fontSize: Get.width / 30, color: Colors.black),
+                        style: TextStyle(
+                            fontSize: Get.width / 30, color: Colors.black),
                         decoration: InputDecoration(
                             icon: Icon(
-                              Icons.person,
+                              Icons.email_outlined,
                               color: Colors.black,
                             ),
                             hintStyle: TextStyle(
                                 fontSize: Get.width / 40, color: Colors.black),
-                            hintText: ("Enter Username"),
+                            hintText: ("Enter Email"),
                             labelStyle: TextStyle(
                                 fontSize: Get.width / 40, color: Colors.black),
-                            labelText: ("Username")),
+                            labelText: ("Email")),
                       ),
                     ),
                     Container(
-                      width: Get.width/3,
+                      width: Get.width / 3,
                       child: DropdownButton<String>(
-                        focusColor:Colors.white,
+                        focusColor: Colors.white,
                         value: initialDomain,
                         //elevation: 5,
                         style: TextStyle(color: Colors.white),
                         //iconEnabledColor:Colors.black,
-                        items: domainData.domain.map<DropdownMenuItem<String>>((value) {
+                        items: domainData.domain
+                            .map<DropdownMenuItem<String>>((value) {
                           return DropdownMenuItem<String>(
                             value: value,
-                            child: Text("@"+value,style:TextStyle(
-                                fontSize: Get.width/35,
-                                color:Colors.black),),
+                            child: Text(
+                              "@" + value,
+                              style: TextStyle(
+                                  fontSize: Get.width / 35,
+                                  color: Colors.black),
+                            ),
                           );
                         }).toList(),
-                        hint:Text(
+                        hint: Text(
                           "Select A Domain",
                           style: TextStyle(
                               color: Colors.black,
-                              fontSize: Get.width/40,
+                              fontSize: Get.width / 40,
                               fontWeight: FontWeight.w500),
                         ),
                         onChanged: (value) {
@@ -104,7 +107,6 @@ class _CreateAccountState extends State<CreateAccount> {
                 TextFormField(
                   controller: passController,
                   obscureText: true,
-                  keyboardType: TextInputType.emailAddress,
                   style:
                       TextStyle(fontSize: Get.width / 30, color: Colors.black),
                   decoration: InputDecoration(
@@ -123,14 +125,10 @@ class _CreateAccountState extends State<CreateAccount> {
                   height: Get.height / 20,
                 ),
                 GestureDetector(
-                    onTap:() => apiCall.createAccount(
-                      email: emailController.text.toString().trim()+"@"+initialDomain.toString().trim(),
-                      password: passController.text.trim()
-                    ),
-                    //onTap:() => print(domainData.domain[0].toString()),
+                    onTap: () => createAccount(),
                     child: CustomButton(
-                  btnText: "Create Account",
-                ))
+                      btnText: "Create Account",
+                    ))
               ],
             ),
           ),
@@ -140,10 +138,18 @@ class _CreateAccountState extends State<CreateAccount> {
   }
 
   createAccount() {
-     apiCall.createAccount(
-        email: emailController.text.toString().trim()+"@"+initialDomain.toString().trim(),
-        password: passController.text.trim()
-    );
-
+    if (emailController.text == '') {
+      Get.snackbar("Plase Enter Email", "");
+    } else if (passController.text == '') {
+      Get.snackbar("Plase Enter Password", "");
+    } else if (initialDomain == null) {
+      Get.snackbar("Plase Select A Domain", "");
+    } else {
+      apiCall.createAccount(
+          email: emailController.text.toString().trim() +
+              "@" +
+              initialDomain.toString().trim(),
+          password: passController.text.trim());
+    }
   }
 }
