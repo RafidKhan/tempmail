@@ -97,6 +97,7 @@ class _DashBoardState extends State<DashBoard> {
           automaticallyImplyLeading: false,
           elevation: 0,
           backgroundColor: Colors.white,
+          leading: Icon(Icons.person,color: Colors.black,),
           title: Text(
             loginData.email.toString(),
             style: TextStyle(
@@ -159,7 +160,16 @@ class _DashBoardState extends State<DashBoard> {
                     height: Get.height / 10,
                     decoration: BoxDecoration(
                         color: Colors.blue[700],
-                        borderRadius: BorderRadius.circular(10)),
+                        borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.9),
+                          spreadRadius: 5,
+                          blurRadius: 7,
+                          offset: Offset(0, 3), // changes position of shadow
+                        ),
+                      ],
+                    ),
                     child: ListTile(
                       leading: Icon(
                         Icons.email,

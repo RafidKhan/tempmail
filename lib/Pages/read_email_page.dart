@@ -23,6 +23,10 @@ class _ReadEmailPageState extends State<ReadEmailPage> {
         elevation: 0,
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
+        leading: Icon(
+          Icons.person,
+          color: Colors.black,
+        ),
         title: Text(
           "${emailData.email}",
           style: TextStyle(color: Colors.black),
@@ -30,7 +34,7 @@ class _ReadEmailPageState extends State<ReadEmailPage> {
       ),
       backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(10.0, 50, 10.0, 10.0),
+        padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,7 +130,7 @@ class _ReadEmailPageState extends State<ReadEmailPage> {
               ),
               Container(
                 width: Get.width,
-                height: Get.height / 2,
+                height: Get.height / 1.5,
                 // color: Colors.blue[100],
                 // decoration: BoxDecoration(
                 //     //color: Colors.blue[100],
