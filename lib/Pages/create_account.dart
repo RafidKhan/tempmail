@@ -19,6 +19,7 @@ class CreateAccount extends StatefulWidget {
 class _CreateAccountState extends State<CreateAccount> {
   TextEditingController emailController = new TextEditingController();
   TextEditingController passController = new TextEditingController();
+  TextEditingController confirmPassController = new TextEditingController();
 
   final apiCall = Get.put(ApiCall());
 
@@ -169,7 +170,32 @@ class _CreateAccountState extends State<CreateAccount> {
                   SizedBox(
                     height: Get.height / 20,
                   ),
-                  // loaderStatus == false
+                  TextFormField(
+                    controller: confirmPassController,
+                    obscureText: true,
+                    style: TextStyle(
+                        fontSize: Get.width / 30, color: Colors.black),
+                    decoration: InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black),
+                        ),
+                        icon: Icon(
+                          Icons.lock,
+                          color: Colors.black,
+                        ),
+                        hintStyle: TextStyle(
+                            fontSize: Get.width / 40, color: Colors.black),
+                        hintText: ("Confirm Password"),
+                        labelStyle: TextStyle(
+                            fontSize: Get.width / 40, color: Colors.black),
+                        labelText: ("Confirm Password")),
+                  ),
+                  SizedBox(
+                    height: Get.height / 20,
+                  ),
                   CreateAccountLoader.loader == false
                       ? GestureDetector(
                           onTap: () => createAccount(),
@@ -208,6 +234,9 @@ class _CreateAccountState extends State<CreateAccount> {
       setState(() {
         CreateAccountLoader.loader = false;
       });
+    } else if (confirmPassController.text.trim() !=
+        passController.text.trim()) {
+      Get.snackbar("Password Does Not Match", "");
     } else {
       await apiCall.createAccount(
           email: emailController.text.toString().trim() +

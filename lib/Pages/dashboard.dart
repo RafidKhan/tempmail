@@ -146,7 +146,7 @@ class _DashBoardState extends State<DashBoard> {
                         ? 'No Subject'
                         : subject[index].toString();
                     emailData.body = await body[index].toString() == 'null'
-                        ? 'Body Bot Found'
+                        ? 'Body Not Found'
                         : body[index].toString();
                     emailData.date = await DateFormat('dd/MM/yyy')
                         .format(DateTime.parse(time[index].toString()));

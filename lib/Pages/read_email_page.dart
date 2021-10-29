@@ -37,32 +37,68 @@ class _ReadEmailPageState extends State<ReadEmailPage> {
             children: [
               Container(
                   width: Get.width,
-                  child: Text(
-                    "${emailData.subject}",
-                    style: TextStyle(
-                        fontSize: Get.width / 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
+                  child: Row(
+                    children: [
+                      Text(
+                        "${emailData.subject}",
+                        style: TextStyle(
+                            fontSize: Get.width / 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      ),
+                      SizedBox(
+                        width: Get.width / 60,
+                      ),
+                      Container(
+                        width: Get.width / 4,
+                        height: Get.height / 30,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.grey[300]),
+                        child: Center(
+                          child: Text(
+                            "Subject",
+                            style: TextStyle(
+                                fontSize: Get.width / 30, color: Colors.black),
+                          ),
+                        ),
+                      ),
+                    ],
                   )),
               SizedBox(
                 height: Get.height / 30,
               ),
               Container(
-                  width: Get.width,
-                  child: Text(
-                    "${emailData.name}",
-                    style: TextStyle(
-                        fontSize: Get.width / 30, fontWeight: FontWeight.w400),
-                  )),
-              Container(
-                  width: Get.width,
-                  child: Text(
-                    "${emailData.email}",
-                    style: TextStyle(
-                        fontSize: Get.width / 30,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.blue[800]),
-                  )),
+                width: Get.width,
+                decoration: BoxDecoration(
+                    color: Colors.blue[100],
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.black)),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "${emailData.name}",
+                        style: TextStyle(
+                            fontSize: Get.width / 30,
+                            fontWeight: FontWeight.w400),
+                      ),
+                      Text(
+                        "${emailData.email}",
+                        style: TextStyle(
+                            fontSize: Get.width / 30,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.blue[800]),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: Get.height / 50,
+              ),
               Container(
                 width: Get.width,
                 child: Column(
@@ -70,24 +106,60 @@ class _ReadEmailPageState extends State<ReadEmailPage> {
                   children: [
                     Text(
                       "${emailData.date}",
-                      style: TextStyle(color: Colors.blue[800]),
+                      style: TextStyle(
+                        color: Colors.blue[800],
+                        decoration: TextDecoration.underline,
+                      ),
                     ),
                     Text(
                       "${emailData.time}",
-                      style: TextStyle(color: Colors.blue[800]),
+                      style: TextStyle(
+                        color: Colors.blue[800],
+                        decoration: TextDecoration.underline,
+                      ),
                     ),
                   ],
                 ),
               ),
               SizedBox(
-                height: Get.height / 10,
+                height: Get.height / 40,
               ),
               Container(
-                  width: Get.width,
-                  child: Text(
-                    "${emailData.body}",
-                    style: TextStyle(fontSize: Get.width / 20),
-                  )),
+                width: Get.width,
+                height: Get.height / 2,
+                // color: Colors.blue[100],
+                // decoration: BoxDecoration(
+                //     //color: Colors.blue[100],
+                //     // border: Border.all(color: Colors.black),
+                //     //borderRadius: BorderRadius.circular(20)
+                //     ),
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.all(0),
+                    child: Text(
+                      "${emailData.body}",
+                      style: TextStyle(fontSize: Get.width / 20),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: Get.height / 40,
+              ),
+              // Align(
+              //   alignment: Alignment.topRight,
+              //   child: Container(
+              //     width: Get.width / 2.5,
+              //     height: Get.height / 20,
+              //     decoration: BoxDecoration(
+              //         borderRadius: BorderRadius.circular(10),
+              //         color: Colors.grey[300]),
+              //     child: IconButton(
+              //       onPressed: () {},
+              //       icon: Icon(Icons.delete_forever),
+              //     ),
+              //   ),
+              // )
             ],
           ),
         ),
