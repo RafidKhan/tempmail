@@ -22,8 +22,8 @@
 18        android:debuggable="true"
 19        android:icon="@mipmap/ic_launcher"
 19-->C:\Users\User\Desktop\Riseup_Labs\temp_mail\android\app\src\main\AndroidManifest.xml:6:9-43
-20        android:label="temp_mail" >
-20-->C:\Users\User\Desktop\Riseup_Labs\temp_mail\android\app\src\main\AndroidManifest.xml:5:9-34
+20        android:label="Mail App" >
+20-->C:\Users\User\Desktop\Riseup_Labs\temp_mail\android\app\src\main\AndroidManifest.xml:5:9-33
 21        <activity
 21-->C:\Users\User\Desktop\Riseup_Labs\temp_mail\android\app\src\main\AndroidManifest.xml:7:9-26:20
 22            android:name="com.tempmail.app.temp_mail.MainActivity"

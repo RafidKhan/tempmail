@@ -200,7 +200,7 @@ class _DashBoardState extends State<DashBoard> {
                             height: Get.height / 60,
                           ),
                           Text(
-                            DateFormat('kk:mm a')
+                            DateFormat('hh:mm a')
                                 .format(DateTime.parse(time[index].toString())),
                             style: TextStyle(color: Colors.white),
                           ),

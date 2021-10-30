@@ -2,7 +2,7 @@
     package="com.tempmail.app.temp_mail">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="temp_mail"
+        android:label="Mail App"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
