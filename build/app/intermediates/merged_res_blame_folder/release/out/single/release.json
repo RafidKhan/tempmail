@@ -4,12 +4,12 @@
         "source": "C:\\Users\\User\\.gradle\\caches\\transforms-2\\files-2.1\\2e94107f30f39be366a17347c2bf100b\\core-1.1.0\\res\\drawable\\notification_bg_low.xml"
     },
     {
-        "merged": "C:\\Users\\User\\Desktop\\Riseup_Labs\\temp_mail\\build\\app\\intermediates\\res\\merged\\release\\mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\User\\Desktop\\Riseup_Labs\\temp_mail\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
-    },
-    {
         "merged": "C:\\Users\\User\\Desktop\\Riseup_Labs\\temp_mail\\build\\app\\intermediates\\res\\merged\\release\\layout-v21_notification_template_icon_group.xml.flat",
         "source": "C:\\Users\\User\\.gradle\\caches\\transforms-2\\files-2.1\\2e94107f30f39be366a17347c2bf100b\\core-1.1.0\\res\\layout-v21\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\Desktop\\Riseup_Labs\\temp_mail\\build\\app\\intermediates\\res\\merged\\release\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\User\\Desktop\\Riseup_Labs\\temp_mail\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\User\\Desktop\\Riseup_Labs\\temp_mail\\build\\app\\intermediates\\res\\merged\\release\\drawable-xhdpi-v4_notify_panel_notification_icon_bg.png.flat",
