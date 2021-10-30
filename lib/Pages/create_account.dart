@@ -71,137 +71,192 @@ class _CreateAccountState extends State<CreateAccount> {
         ),
         body: Center(
           child: Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(10.0),
             child: SingleChildScrollView(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      Container(
-                        width: Get.width / 2,
-                        child: TextFormField(
-                          controller: emailController,
-                          style: TextStyle(
-                              fontSize: Get.width / 30, color: Colors.black),
-                          decoration: InputDecoration(
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black),
-                              ),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black),
-                              ),
-                              icon: Icon(
-                                Icons.email,
-                                color: Colors.black,
-                              ),
-                              hintStyle: TextStyle(
-                                  fontSize: Get.width / 40,
-                                  color: Colors.black),
-                              hintText: ("Enter Email"),
-                              labelStyle: TextStyle(
-                                  fontSize: Get.width / 40,
-                                  color: Colors.black),
-                              labelText: ("Email")),
-                        ),
-                      ),
-                      Container(
-                        width: Get.width / 3,
-                        child: DropdownButton<String>(
-                          focusColor: Colors.white,
-                          value: initialDomain,
-                          elevation: 0,
-                          style: TextStyle(color: Colors.white),
-                          //iconEnabledColor:Colors.black,
-                          items: domainData.domain
-                              .map<DropdownMenuItem<String>>((value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(
-                                "@" + value,
-                                style: TextStyle(
-                                    fontSize: Get.width / 35,
-                                    color: Colors.black),
-                              ),
-                            );
-                          }).toList(),
-                          hint: Text(
-                            "Select A Domain",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: Get.width / 40,
-                                fontWeight: FontWeight.w500),
-                          ),
-                          onChanged: (value) {
-                            setState(() {
-                              initialDomain = value;
-                            });
-                            print(initialDomain);
-                          },
-                        ),
-                      ),
-                    ],
+                  Text(
+                    "Create Account",
+                    style: TextStyle(
+                        fontSize: Get.width / 12,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w400),
                   ),
                   SizedBox(
-                    height: Get.height / 20,
+                    height: Get.height / 40,
                   ),
-                  TextFormField(
-                    controller: passController,
-                    obscureText: true,
-                    style: TextStyle(
-                        fontSize: Get.width / 30, color: Colors.black),
-                    decoration: InputDecoration(
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black),
+                  Container(
+                    // decoration: BoxDecoration(
+                    //   border: Border.all(color: Colors.black),
+                    //   borderRadius: BorderRadius.circular(10),
+                    //   //color: Colors.yellow
+                    // ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  width: Get.width / 2,
+                                  child: TextFormField(
+                                    controller: emailController,
+                                    style: TextStyle(
+                                        fontSize: Get.width / 30,
+                                        color: Colors.black),
+                                    decoration: InputDecoration(
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.black),
+                                        ),
+                                        focusedBorder: UnderlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.black),
+                                        ),
+                                        icon: Icon(
+                                          Icons.email,
+                                          color: Colors.black,
+                                        ),
+                                        hintStyle: TextStyle(
+                                            fontSize: Get.width / 40,
+                                            color: Colors.black),
+                                        hintText: ("Enter Email"),
+                                        labelStyle: TextStyle(
+                                            fontSize: Get.width / 40,
+                                            color: Colors.black),
+                                        labelText: ("Email")),
+                                  ),
+                                ),
+                                Container(
+                                  width: Get.width / 3,
+                                  child: DropdownButton<String>(
+                                    focusColor: Colors.white,
+                                    value: initialDomain,
+                                    elevation: 0,
+                                    style: TextStyle(color: Colors.white),
+                                    //iconEnabledColor:Colors.black,
+                                    items: domainData.domain
+                                        .map<DropdownMenuItem<String>>((value) {
+                                      return DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Text(
+                                          "@" + value,
+                                          style: TextStyle(
+                                              fontSize: Get.width / 35,
+                                              color: Colors.black),
+                                        ),
+                                      );
+                                    }).toList(),
+                                    hint: Text(
+                                      "Select A Domain",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: Get.width / 40,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    onChanged: (value) {
+                                      setState(() {
+                                        initialDomain = value;
+                                      });
+                                      print(initialDomain);
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: Get.height / 20,
+                            ),
+                            TextFormField(
+                              controller: passController,
+                              obscureText: true,
+                              style: TextStyle(
+                                  fontSize: Get.width / 30,
+                                  color: Colors.black),
+                              decoration: InputDecoration(
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black),
+                                  ),
+                                  icon: Icon(
+                                    Icons.lock,
+                                    color: Colors.black,
+                                  ),
+                                  hintStyle: TextStyle(
+                                      fontSize: Get.width / 40,
+                                      color: Colors.black),
+                                  hintText: ("Enter Password"),
+                                  labelStyle: TextStyle(
+                                      fontSize: Get.width / 40,
+                                      color: Colors.black),
+                                  labelText: ("Password")),
+                            ),
+                            SizedBox(
+                              height: Get.height / 20,
+                            ),
+                            TextFormField(
+                              controller: confirmPassController,
+                              obscureText: true,
+                              style: TextStyle(
+                                  fontSize: Get.width / 30,
+                                  color: Colors.black),
+                              decoration: InputDecoration(
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black),
+                                  ),
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.black),
+                                  ),
+                                  icon: Icon(
+                                    Icons.lock,
+                                    color: Colors.black,
+                                  ),
+                                  hintStyle: TextStyle(
+                                      fontSize: Get.width / 40,
+                                      color: Colors.black),
+                                  hintText: ("Confirm Password"),
+                                  labelStyle: TextStyle(
+                                      fontSize: Get.width / 40,
+                                      color: Colors.black),
+                                  labelText: ("Confirm Password")),
+                            ),
+                            // SizedBox(
+                            //   height: Get.height / 20,
+                            // ),
+                            // CreateAccountLoader.loader == false
+                            //     ? Align(
+                            //   alignment: Alignment.topRight,
+                            //       child: GestureDetector(
+                            //           onTap: () => createAccount(),
+                            //           child: CustomButton(
+                            //             btnText: "Create Account",
+                            //           )),
+                            //     )
+                            //     : SpinKitWanderingCubes(
+                            //         color: Colors.black,
+                            //         size: Get.width / 10,
+                            //       )
+                          ],
                         ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black),
-                        ),
-                        icon: Icon(
-                          Icons.lock,
-                          color: Colors.black,
-                        ),
-                        hintStyle: TextStyle(
-                            fontSize: Get.width / 40, color: Colors.black),
-                        hintText: ("Enter Password"),
-                        labelStyle: TextStyle(
-                            fontSize: Get.width / 40, color: Colors.black),
-                        labelText: ("Password")),
-                  ),
-                  SizedBox(
-                    height: Get.height / 20,
-                  ),
-                  TextFormField(
-                    controller: confirmPassController,
-                    obscureText: true,
-                    style: TextStyle(
-                        fontSize: Get.width / 30, color: Colors.black),
-                    decoration: InputDecoration(
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black),
-                        ),
-                        icon: Icon(
-                          Icons.lock,
-                          color: Colors.black,
-                        ),
-                        hintStyle: TextStyle(
-                            fontSize: Get.width / 40, color: Colors.black),
-                        hintText: ("Confirm Password"),
-                        labelStyle: TextStyle(
-                            fontSize: Get.width / 40, color: Colors.black),
-                        labelText: ("Confirm Password")),
+                      ),
+                    ),
                   ),
                   SizedBox(
                     height: Get.height / 20,
                   ),
                   CreateAccountLoader.loader == false
-                      ? GestureDetector(
-                          onTap: () => createAccount(),
-                          child: CustomButton(
-                            btnText: "Create Account",
-                          ))
+                      ? Align(
+                          alignment: Alignment.topRight,
+                          child: GestureDetector(
+                              onTap: () => createAccount(),
+                              child: CustomButton(
+                                btnText: "Create Account",
+                              )),
+                        )
                       : SpinKitWanderingCubes(
                           color: Colors.black,
                           size: Get.width / 10,
@@ -237,6 +292,9 @@ class _CreateAccountState extends State<CreateAccount> {
     } else if (confirmPassController.text.trim() !=
         passController.text.trim()) {
       Get.snackbar("Password Does Not Match", "");
+      setState(() {
+        CreateAccountLoader.loader = false;
+      });
     } else {
       await apiCall.createAccount(
           email: emailController.text.toString().trim() +

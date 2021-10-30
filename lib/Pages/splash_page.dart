@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:temp_mail/Repositories/SharedPreference.dart';
 import 'package:temp_mail/Repositories/api_methods.dart';
@@ -30,9 +31,9 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   void initState() {
-    loginData.token =  SharedPreff.to.prefss!.getString("SP_Token");
-    loginData.id =  SharedPreff.to.prefss!.getString("SP_ID");
-    loginData.email =  SharedPreff.to.prefss!.getString("Email");
+    loginData.token = SharedPreff.to.prefss!.getString("SP_Token");
+    loginData.id = SharedPreff.to.prefss!.getString("SP_ID");
+    loginData.email = SharedPreff.to.prefss!.getString("Email");
     apiCall.getDomains();
     timerFunc();
     super.initState();
@@ -41,11 +42,28 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Container(
-        height: Get.height,
-        width: Get.width,
-        child: Image.asset('assets/splash.jpeg', fit: BoxFit.fitHeight,),
+      body: Stack(
+        alignment: Alignment.center,
+        children: [
+          Container(
+            height: Get.height,
+            width: Get.width,
+            color: Colors.white,
+            child: Image.asset(
+              'assets/splash.jpeg',
+              fit: BoxFit.fitHeight,
+            ),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SpinKitThreeBounce(
+                color: Colors.white,
+                size: Get.width/20,
+              ),
+            ],
+          )
+        ],
       ),
     );
   }

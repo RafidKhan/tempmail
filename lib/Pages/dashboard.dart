@@ -97,7 +97,10 @@ class _DashBoardState extends State<DashBoard> {
           automaticallyImplyLeading: false,
           elevation: 0,
           backgroundColor: Colors.white,
-          leading: Icon(Icons.person,color: Colors.black,),
+          leading: Icon(
+            Icons.person,
+            color: Colors.black,
+          ),
           title: Text(
             loginData.email.toString(),
             style: TextStyle(
@@ -147,7 +150,7 @@ class _DashBoardState extends State<DashBoard> {
                         ? 'No Subject'
                         : subject[index].toString();
                     emailData.body = await body[index].toString() == 'null'
-                        ? 'Body Not Found'
+                        ? '  '
                         : body[index].toString();
                     emailData.date = await DateFormat('dd/MM/yyy')
                         .format(DateTime.parse(time[index].toString()));
@@ -159,8 +162,8 @@ class _DashBoardState extends State<DashBoard> {
                     width: Get.width,
                     height: Get.height / 10,
                     decoration: BoxDecoration(
-                        color: Colors.blue[700],
-                        borderRadius: BorderRadius.circular(10),
+                      color: Colors.blue[700],
+                      borderRadius: BorderRadius.circular(10),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.grey.withOpacity(0.9),
